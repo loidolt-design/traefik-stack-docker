@@ -1,0 +1,25 @@
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[acme]
+email = "loidolt@gmail.com"
+storage = "acme.json"
+caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+entryPoint = "https"
+  [acme.httpChallenge]
+  entryPoint = "http"
+
+[[acme.domains]]
+  main = "loidoltdesign.com"
+  sans = ["portainer.loidoltdesign.com", "traefik.loidoltdesign.com", "wptest.loidoltdesign.com"]
+[[acme.domains]]
+  main = "local2.com"
+  sans = ["test1.local2.com", "test2x.local2.com"]
+[[acme.domains]]
+  main = "local3.com"
+[[acme.domains]]
+  main = "local4.com"
