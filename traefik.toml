@@ -20,6 +20,6 @@ defaultEntryPoints = ["http", "https"]
   entryPoint = "http"
 
 [docker]
-  domain = "traefik"
+  domain = "loidoltdesign.com"
   watch = true
   swarmmode = true
