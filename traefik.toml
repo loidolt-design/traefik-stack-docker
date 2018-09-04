@@ -16,7 +16,7 @@ defaultEntryPoints = ["https","http"]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "traefik.example.com"
+domain = "traefik.loidoltdesign.com"
 watch = true
 exposedbydefault = false
 
