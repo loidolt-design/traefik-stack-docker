@@ -42,7 +42,6 @@ networks:
 
 volumes:
   traefik_data:
-    driver: overlay
 
 configs:
   traefik.toml:
