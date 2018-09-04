@@ -34,35 +34,11 @@ services:
         - "traefik.enable=true"
         - "traefik.port=9000"
         - "traefik.docker.network=mystack_traefik-net"
-        - "traefik.frontend.rule=Host:portainer.traefik"
-
-  ms1:
-    image: melvindave/spring-boot-example
-    networks:
-      - traefik-net
-    depends_on:
-      - mongodb
-    deploy:
-      replicas: 1
-      labels:
-        - "traefik.enable=true"
-        - "traefik.port=8080"
-        - "traefik.docker.network=mystack_traefik-net"
-        - "traefik.frontend.rule=Host:ms1.traefik"
-
-  mongodb:
-    image: mongo
-    volumes:
-      - "mongodata:/data/db"
-    networks:
-      - traefik-net
-    deploy:
-      replicas: 1
-    ports:
-      - "27017:27017"  
+        - "traefik.frontend.rule=Host:portainer.loidoltdesign.com" 
 
 networks:
   traefik-net:
 
 volumes:
+   portainerdata:
    mongodata:
