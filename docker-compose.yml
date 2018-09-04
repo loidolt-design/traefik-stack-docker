@@ -26,6 +26,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/traefik.toml
+      - ./acme.json:acme.json
     labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
