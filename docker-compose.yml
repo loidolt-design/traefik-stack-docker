@@ -11,7 +11,7 @@ services:
       restart_policy:
         condition: on-failure
         max_attempts: 3
-    command: --web --docker --logLevel=INFO
+    command: --web --docker
     networks:
       - web
     # The traefik entryPoints
