@@ -14,6 +14,8 @@ defaultEntryPoints = ["http", "https"]
   email = "loidolt@gmail.com"
   storage = "acme.json"
   entryPoint = "https"
+  acmeLogging=true
+  onDemand=false
   OnHostRule = true
 
 [acme.httpChallenge]
