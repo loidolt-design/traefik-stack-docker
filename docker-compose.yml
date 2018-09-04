@@ -25,8 +25,8 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${PWD}/traefik.toml:/traefik.toml
-      - ${PWD}/acme.json:acme.json
+      - $(pwd)/traefik.toml:/traefik.toml
+      - $(pwd)/acme.json:acme.json
     labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
