@@ -2,6 +2,16 @@ version: "3.3"
 services:
   traefik:
     image: traefik
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+      placement:
+        constraints: [node.role==manager]
     command: --web \
       --docker \
       --docker.swarmmode \
@@ -16,9 +26,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /dev/null:/traefik.toml
-    deploy:
-      placement:
-        constraints: [node.role==manager]
 
 networks:
   web:
