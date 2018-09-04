@@ -29,8 +29,6 @@ services:
       - source: traefik.toml
         target: /etc/traefik/traefik.toml
     labels:
-      - "traefik.enable=false"
-    labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
       - "traefik.docker.network=web"
