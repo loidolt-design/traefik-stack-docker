@@ -29,6 +29,8 @@ services:
     configs:
       - source: traefik.toml
         target: /etc/traefik/traefik.toml
+      - source: acme.json
+        target: /etc/traefik/acme.json
     labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
@@ -42,3 +44,5 @@ networks:
 configs:
   traefik.toml:
     file: ./traefik.toml
+  acme.json:
+    file: ./acme.json
