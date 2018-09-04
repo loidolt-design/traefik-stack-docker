@@ -19,25 +19,3 @@ services:
     deploy:
       placement:
         constraints: [node.role==manager]
-
-  portainer:
-    image: portainer/portainer
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "portainerdata:/data"
-    networks:
-      - web
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-      labels:
-        - "traefik.enable=true"
-        - "traefik.port=9000"
-        - "traefik.docker.network=web"
-        - "traefik.frontend.rule=Host:portainer.loidoltdesign.com" 
-
-networks:
-  web:
-
-volumes:
-   portainerdata:
