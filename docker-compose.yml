@@ -1,32 +1,68 @@
-version: '3.6'
-
+version: "3.3"
 services:
-  proxy:
-    image: traefik:1.7.0
-    deploy:
-      replicas: 1
-      update_config:
-        parallelism: 1
-        delay: 10s
-      restart_policy:
-        condition: on-failure
-        max_attempts: 3
-    command: --web --docker
+  traefik:
+    image: traefik
+    command: --web \
+      --docker \
+      --docker.swarmmode \
+      --docker.domain=traefik \
+      --docker.watch \
+      --logLevel=DEBUG
     networks:
-      - web
-    # The traefik entryPoints
+      - traefik-net
     ports:
       - "80:80"
-      - "443:443"
       - "8080:8080"
-    labels:
-      - "traefik.port=8080"
-      - "traefik.docker.network=web"
-      - "traefik.frontend.rule=Host:traefik.loidoltdesign.com"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik.toml:/traefik.toml
-      - ./acme.json:/acme.json
+      - /dev/null:/traefik.toml
+    deploy:
+      placement:
+        constraints: [node.role==manager]
+
+  portainer:
+    image: portainer/portainer
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "portainerdata:/data"
+    networks:
+      - traefik-net
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+      labels:
+        - "traefik.enable=true"
+        - "traefik.port=9000"
+        - "traefik.docker.network=mystack_traefik-net"
+        - "traefik.frontend.rule=Host:portainer.traefik"
+
+  ms1:
+    image: melvindave/spring-boot-example
+    networks:
+      - traefik-net
+    depends_on:
+      - mongodb
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.port=8080"
+        - "traefik.docker.network=mystack_traefik-net"
+        - "traefik.frontend.rule=Host:ms1.traefik"
+
+  mongodb:
+    image: mongo
+    volumes:
+      - "mongodata:/data/db"
+    networks:
+      - traefik-net
+    deploy:
+      replicas: 1
+    ports:
+      - "27017:27017"  
+
 networks:
-  web:
-    external: true
+  traefik-net:
+
+volumes:
+   mongodata:
