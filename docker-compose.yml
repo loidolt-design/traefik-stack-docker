@@ -13,7 +13,7 @@ services:
         max_attempts: 3
     command: --web --docker --logLevel=INFO
     networks:
-      - public
+      - web
     # The traefik entryPoints
     ports:
       - "80:80"
@@ -28,5 +28,5 @@ services:
       - ./traefik.toml:/traefik.toml
       - ./acme.json:/acme.json
 networks:
-  public:
-    driver: overlay
+  web:
+    external: true
