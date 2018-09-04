@@ -41,3 +41,7 @@ services:
 networks:
   web:
     external: true
+
+configs:
+  traefik.toml:
+    file: ./traefik.toml
