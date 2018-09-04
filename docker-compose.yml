@@ -5,11 +5,11 @@ services:
     command: --web \
       --docker \
       --docker.swarmmode \
-      --docker.domain=traefik \
+      --docker.domain=loidoltdesign.com \
       --docker.watch \
       --logLevel=DEBUG
     networks:
-      - traefik-net
+      - web
     ports:
       - "80:80"
       - "8080:8080"
@@ -26,19 +26,18 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "portainerdata:/data"
     networks:
-      - traefik-net
+      - web
     deploy:
       placement:
         constraints: [node.role == manager]
       labels:
         - "traefik.enable=true"
         - "traefik.port=9000"
-        - "traefik.docker.network=mystack_traefik-net"
+        - "traefik.docker.network=web"
         - "traefik.frontend.rule=Host:portainer.loidoltdesign.com" 
 
 networks:
-  traefik-net:
+  web:
 
 volumes:
    portainerdata:
-   mongodata:
