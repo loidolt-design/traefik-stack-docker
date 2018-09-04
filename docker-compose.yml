@@ -31,6 +31,8 @@ services:
       - "traefik.port=8080"
       - "traefik.docker.network=web"
       - "traefik.frontend.rule=Host:traefik.loidoltdesign.com"
+      - "traefik.backend.loadbalancer.sticky=true"
+      - "traefik.frontend.passHostHeader=true"
 
 networks:
   web:
