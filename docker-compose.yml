@@ -23,6 +23,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     configs:
@@ -33,8 +34,6 @@ services:
       - "traefik.port=8080"
       - "traefik.docker.network=web"
       - "traefik.frontend.rule=Host:traefik.loidoltdesign.com"
-      - "traefik.backend.loadbalancer.sticky=true"
-      - "traefik.frontend.passHostHeader=true"
 
 networks:
   web:
