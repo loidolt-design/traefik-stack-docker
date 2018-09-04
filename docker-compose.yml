@@ -3,10 +3,10 @@ services:
   traefik:
     image: traefik
     deploy:
-      replicas: 3
+      replicas: 1
       update_config:
         parallelism: 1
-        delay: 10s
+        #delay: 10s
       restart_policy:
         condition: on-failure
         max_attempts: 3
