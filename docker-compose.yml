@@ -32,7 +32,7 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /swarm/volumes/traefik/ssl:integration/fixtures/https
+      - ./certs:/etc/traefik/certs
     configs:
       - source: traefik.toml
         target: /etc/traefik/traefik.toml
