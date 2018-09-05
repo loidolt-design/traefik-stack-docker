@@ -6,13 +6,6 @@ defaultEntryPoints = ["http", "https"]
 [entryPoints]
   [entryPoints.http]
   address = ":80"
-  [entryPoints.http.auth]
-      headerField = "X-WebAuth-User"
-      [entryPoints.http.auth.basic]
-        users = [
-          "test:password",
-          "test2:password2",
-        ]
   #   [entryPoints.http.redirect]
   #       entryPoint = "https"
   [entryPoints.https]
