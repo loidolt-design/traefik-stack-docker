@@ -22,8 +22,3 @@ defaultEntryPoints = ["http", "https"]
 
 [acme.httpChallenge]
   entryPoint = "http"
-
-[docker]
-  domain = "loidoltdesign.com"
-  watch = true
-  swarmmode = true
