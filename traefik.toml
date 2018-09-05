@@ -25,6 +25,7 @@ defaultEntryPoints = ["http", "https"]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "my-awesome-project.local"
+domain = "loidoltdesign.com"
 watch = true
+swarmMode = true
 exposedbydefault = false
