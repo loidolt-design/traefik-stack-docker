@@ -19,11 +19,11 @@ services:
       - "traefik.frontend.rule=Host:traefik.loidoltdesign.com"
       - "traefik.frontend.rule=PathPrefix:/function"
       - "traefik.frontend.auth.basic=user:password"
-    #command: --web \
-      #--docker \
-      #--docker.swarmmode \
-      #--docker.domain=loidoltdesign.com \
-      #--docker.watch \
+    command: --web \
+      --docker \
+      --docker.swarmmode \
+      --docker.domain=loidoltdesign.com \
+      --docker.watch \
       #--logLevel=DEBUG
     networks:
       - web
