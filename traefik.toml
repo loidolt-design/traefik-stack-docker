@@ -7,7 +7,7 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.http]
   address = ":80"
   [entryPoints.http.auth.basic]
-  users = ["user:HTTPSpassword"]
+  users = ["user:HTTPpassword"]
   #   [entryPoints.http.redirect]
   #       entryPoint = "https"
   [entryPoints.https]
@@ -29,3 +29,6 @@ defaultEntryPoints = ["http", "https"]
   domain = "loidoltdesign.com"
   watch = true
   swarmmode = true
+
+[web.auth.basic]
+users = ["user:password"]
