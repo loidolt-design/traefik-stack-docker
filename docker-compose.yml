@@ -15,10 +15,10 @@ services:
       labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
-      - "traefik.docker.network=web.basic.auth"
+      #- "traefik.docker.network=web"
       - "traefik.frontend.rule=Host:traefik.loidoltdesign.com"
-      - "traefik.frontend.rule=PathPrefix:/function"
-      - "traefik.frontend.auth.basic=user:password"
+      #- "traefik.frontend.rule=PathPrefix:/function"
+      #- "traefik.frontend.auth.basic=user:password"
     command: --web 
       #-docker \
       #--docker.swarmmode \
