@@ -34,6 +34,3 @@ defaultEntryPoints = ["http", "https"]
   domain = "loidoltdesign.com"
   watch = true
   swarmmode = true
-
-[web.auth.basic]
-users = ["user:password"]
