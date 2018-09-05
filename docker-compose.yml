@@ -32,10 +32,13 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      #- /swarm/volumes/traefik:/etc/traefik/acme
+      - /swarm/volumes/traefik/ssl:integration/fixtures/https
     configs:
       - source: traefik.toml
         target: /etc/traefik/traefik.toml
+    secrets:
+      - downdraftdrones_sslcrt
+      - downdraftdrones_sslkey
 
 networks:
   web:
@@ -44,3 +47,9 @@ networks:
 configs:
   traefik.toml:
     file: ./traefik.toml
+
+secrets:
+  downdraftdrones_sslcrt:
+    external: true
+  downdraftdrones_sslkey:
+    external: true

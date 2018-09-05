@@ -11,6 +11,9 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      certFile = "/run/secrets/downdraftdrones.com.crt"
+      keyFile = "/run/secrets/downdraftdrones.key"
 
 [acme]
   email = "loidolt@gmail.com"
