@@ -17,8 +17,8 @@ defaultEntryPoints = ["http", "https"]
   storage = "acme.json"
   entryPoint = "https"
   acmeLogging=true
-  onDemand=false
-  OnHostRule = true
+  onDemand=true
+  #OnHostRule = true
 
 [acme.httpChallenge]
   entryPoint = "http"
