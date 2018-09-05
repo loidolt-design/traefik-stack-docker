@@ -22,7 +22,7 @@ services:
     command: --web \
       --docker \
       --docker.swarmmode \
-      --docker.domain=loidoltdesign.com \
+      --docker.domain=loidoltdesign.com
       #--docker.watch \
       #--logLevel=DEBUG
     networks:
