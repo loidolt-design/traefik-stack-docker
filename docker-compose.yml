@@ -19,7 +19,6 @@ services:
       - "traefik.frontend.rule=Host:traefik.loidoltdesign.com"
       #- "traefik.frontend.rule=PathPrefix:/function"
       #- "traefik.frontend.auth.basic=user:password"
-    command: --web
     networks:
       - web
     ports:
