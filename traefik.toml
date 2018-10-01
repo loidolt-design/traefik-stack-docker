@@ -1,3 +1,5 @@
+logLevel = "ERROR"
+
 defaultEntryPoints = ["http", "https"]
 
 [web]
